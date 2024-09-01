@@ -1,0 +1,41 @@
+
+1;115;0c#!/bin/bash
+#set -x
+
+tablet(){
+    xrandr --output eDP-1  --rotate inverted
+    xinput set-prop 18 "Coordinate Transformation Matrix" 1 0 1 0 1 1 0 0 1
+    xinput set-prop 9 "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1
+    xinput set-prop 10 "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1
+
+
+}
+laptop(){
+    xinput set-prop 18 "Coordinate Transformation Matrix" -1 0 1 0 -1 1 0 0 1
+    xinput set-prop 9 "Coordinate Transformation Matrix" 1 0 1 0 1 1 0 0 1
+    xinput set-prop 10 "Coordinate Transformation Matrix" 1 0 1 0 1 1 0 0 1
+
+
+    xrandr --output eDP-1  --rotate normal
+
+
+}
+
+case "$1" in
+'tablet')
+  tablet
+  ;;
+'laptop')
+  laptop
+  ;;
+*)
+   laptop
+   echo "usage setmode (laptop|tablet)"
+esac
+
+
+
+
+
+
+
