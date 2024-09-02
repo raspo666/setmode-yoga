@@ -28,8 +28,8 @@ case "$1" in
   laptop
   ;;
 *)
-   laptop
-   echo "usage setmode (laptop|tablet)"
+    laptop #be on the safe side...
+    echo "usage setmode (laptop|tablet)"
 esac
 
 
